@@ -12,6 +12,7 @@ body {
   line-height: 1.6;
 }
 
+/* Header */
 header {
   background-color: #2c3e50;
   color: white;
@@ -23,23 +24,28 @@ header h1 {
   margin-bottom: 10px;
 }
 
+/* Navigation */
 nav ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  padding: 0 10px;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  transition: text-decoration 0.2s;
 }
 
 nav ul li a:hover {
   text-decoration: underline;
 }
 
+/* Main Content */
 main {
   max-width: 900px;
   margin: 20px auto;
@@ -52,6 +58,7 @@ main {
   gap: 20px;
   justify-content: space-around;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -59,7 +66,7 @@ main {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(44, 62, 80, 0.1);
   padding: 20px;
-  flex: 1;
+  flex: 1 1 250px;
   text-align: center;
 }
 
@@ -74,7 +81,7 @@ main {
   color: #2980b9;
 }
 
-/* Issue Form */
+/* Form Sections */
 .issue-form,
 .recommendation {
   background-color: white;
@@ -127,7 +134,7 @@ button:hover {
   background-color: #1c5980;
 }
 
-/* Recommendation Specific Styles */
+/* Recommendation Note */
 .recommendation {
   background-color: #f0f8ff;
 }
@@ -139,10 +146,19 @@ button:hover {
   font-style: italic;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
   background-color: #2c3e50;
   color: white;
   margin-top: 40px;
+}
+
+/* Responsive Adjustment */
+@media (max-width: 600px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
