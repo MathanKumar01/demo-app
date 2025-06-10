@@ -1,0 +1,86 @@
+/* Section Wrapper */
+.wrapper {
+  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+/* Main Container */
+.container {
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Title */
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Card Styling */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 20px;
+  color: #2980b9;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Home Button Wrapper */
+.homeLinkWrapper {
+  margin-top: 40px;
+}
+
+/* Home Button Styling */
+.homeButton {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #2980b9;
+  border: 2px solid #2980b9;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.homeButton:hover {
+  background-color: #2980b9;
+  color: white;
+}

@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import BookStats from '../components/BookStats';
+import IssueBookForm from '../components/IssueBookForm';
 
 export default function Home() {
   return (
@@ -19,39 +21,8 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="dashboard">
-          <h2>Dashboard</h2>
-          <div className="card-container">
-            <div className="card">
-              <h3>Total Books</h3>
-              <p>150</p>
-            </div>
-            <div className="card">
-              <h3>Issued Books</h3>
-              <p>45</p>
-            </div>
-            <div className="card">
-              <h3>Total Students</h3>
-              <p>80</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="issue-form">
-          <h2>Issue Book</h2>
-          <form>
-            <label>
-              Student ID:
-              <input type="text" placeholder="Enter student ID" />
-            </label>
-            <label>
-              Book ID:
-              <input type="text" placeholder="Enter book ID" />
-            </label>
-            <button type="submit">Issue</button>
-          </form>
-        </section>
-
+        <BookStats />
+        <IssueBookForm />
         <section className="recommendation">
           <h2>AI Book Recommendation</h2>
           <form>
