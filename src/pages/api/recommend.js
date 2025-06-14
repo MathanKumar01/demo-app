@@ -1,3 +1,8 @@
+// /src/pages/api/recommend.js
+
+import { db } from '../../firebaseConfig';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Only POST requests allowed' });
@@ -11,7 +16,7 @@ export default async function handler(req, res) {
       headers: {
         'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'http://localhost:3000',
+        'HTTP-Referer': 'http://localhost:3000', // change this to your live site when deployed
         'X-Title': 'Library Book Recommendation'
       },
       body: JSON.stringify({
@@ -30,16 +35,25 @@ export default async function handler(req, res) {
     });
 
     const result = await response.json();
-    console.log("🔎 OpenRouter response:", result);
+    const aiReply = result.choices?.[0]?.message?.content;
 
-    if (result.choices && result.choices.length > 0 && result.choices[0].message?.content) {
-      return res.status(200).json({ recommendation: result.choices[0].message.content });
+    if (aiReply) {
+      // 🔥 Store in Firestore
+      await addDoc(collection(db, 'recommendations'), {
+        userInput,
+        aiResponse: aiReply,
+        createdAt: serverTimestamp()
+      });
+
+      return res.status(200).json({ recommendation: aiReply });
     } else {
-      return res.status(200).json({ error: '❗ No recommendation found. Try entering a genre or book title.' });
+      return res.status(200).json({
+        recommendation: '❗ No recommendation found. Try entering a genre or book title.'
+      });
     }
 
   } catch (error) {
-    console.error('Error from OpenRouter API:', error);
-    res.status(500).json({ error: 'Something went wrong with OpenRouter API' });
+    console.error('❌ Firestore Save Error:', error);
+    return res.status(500).json({ error: 'Something went wrong while generating or saving recommendation.' });
   }
 }

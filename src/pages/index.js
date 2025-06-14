@@ -40,7 +40,7 @@ export default function Home() {
       </header>
 
       <main style={{ padding: '30px' }}>
-        {/* 🔍 Search Bar - Top of Main Content */}
+        {/* 🔍 Search Bar */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -68,7 +68,7 @@ export default function Home() {
         <BookStats />
         <IssueBookForm />
 
-        {/* 🤖 AI Book Recommendation Section */}
+        {/* 🤖 AI Book Recommendation */}
         <section style={{
           marginTop: '40px',
           backgroundColor: '#fff',
